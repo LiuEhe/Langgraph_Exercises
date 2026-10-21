@@ -2,7 +2,7 @@
 
 使用 Python 3.12 和 uv，围绕八周路线逐步学习 Agent 工作流、RAG、MCP、多智能体、评估、人工介入与部署。
 
-教学方式、常用 API 清单与阶段验收标准见 [AGENTS.md](AGENTS.md)。当前仅配置核心依赖与学习环境，尚未选择模型供应商。
+教学方式、常用 API 清单与阶段验收标准见 [AGENTS.md](AGENTS.md)。模型信息已保存在根目录 `.env`，当前尚未安装模型适配包或验证真实服务。
 
 初始验证环境：Python 3.12.13、LangChain 1.4.6、LangGraph 1.2.16。依赖更新后以 `uv.lock` 和实际查询结果为准。
 
@@ -20,14 +20,34 @@ uv run python --version
 
 在 IDE 中选择 `.venv\Scripts\python.exe` 作为项目解释器。
 
+## 怎么开始学习
+
+先看 [教学组织与目录约定](docs/teaching-workflow.md)，再从 [课程索引](docs/lessons/README.md) 找到当前课。导师使用 [讲义模板](docs/lesson-template.md) 逐课备课。
+
+每课按“讲义初稿 → 导师示例与练习骨架 → 运行验证并完善讲义 → 学习者练习 → 讲评与记录”推进。讲义覆盖具体 API 的用法、预期输出、实际效果、限制和验收方式。
+
+| 你要做的事 | 到哪里找 |
+| --- | --- |
+| 阅读每课讲义 | `docs/lessons/` |
+| 运行导师示例 | `examples/<课号_主题>/demo.py` |
+| 编写自己的练习 | `exercises/<课号_主题>/exercise.py` |
+| 讲评时查看参考解答 | `solutions/<课号_主题>/solution.py` |
+| 查看学习进度 | `docs/learning-log.md` |
+| 后续开发完整项目 | `src/agent_learning/` |
+
+课程代码和学习记录按实际进度创建。当前已建立说明、课程索引和讲义模板，尚未生成第一课讲义与代码。
+
 ## 常用命令
 
 ```powershell
 # 查看已安装的框架版本，不需要模型凭据
 uv run python -c "from importlib.metadata import version; print('langchain', version('langchain')); print('langgraph', version('langgraph'))"
 
-# 运行后续创建的练习脚本，将路径替换为实际文件
-uv run python path\to\lesson.py
+# 运行离线示例：第一课代码创建后使用
+uv run python examples/01_state_node_edge/demo.py
+
+# 运行自己的练习：第一课代码创建后使用
+uv run python exercises/01_state_node_edge/exercise.py
 
 # 按课程需要添加依赖，例如数据验证库
 uv add pydantic
@@ -36,7 +56,21 @@ uv add pydantic
 git status
 ```
 
-模型调用需要相应供应商适配包、凭据和可用模型名称，后续课程按实际服务配置。图结构、提示词模板和本地工具等练习可以先离线运行。
+## 模型配置
+
+你已配置的 `.env` 包含 `LLM_PROVIDER`、`LLM_MODEL`、`LLM_API_KEY`、`LLM_BASE_URL`、`LLM_TIMEOUT_SECONDS`。格式示例见 [.env.example](.env.example)，保留自己的实际值。
+
+当前 `openai_compatible` 标记在代码中应映射为 LangChain 的 `openai` 适配器，并显式传入模型名、密钥、地址和超时。后续首个模型课程先安装 `langchain-openai`；当前尚未进行这一步。
+
+模型课程的命令统一为以下形式，路径替换为该课实际文件：
+
+```powershell
+uv run --env-file .env python path/to/model_lesson.py
+```
+
+uv 显式加载 `.env` 后，Python 通过 `os.environ` 读取配置；仅使用 `uv run python ...` 不会自动加载该文件。[uv 官方说明](https://docs.astral.sh/uv/concepts/projects/run/#environment-variables)
+
+图结构、提示词模板和本地工具练习无需模型服务。真实调用、工具调用能力和结构化输出能力分别验证，不能仅凭配置齐全就视为已可用。
 
 ## Git 与本地文件
 
