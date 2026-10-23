@@ -10,7 +10,7 @@
 
 ## 文件分别放哪里
 
-以下为目录约定，树中以第 01 课说明命名方式，完整课程文件见课程索引。第 01～05 课讲义、示例与练习、学习记录及第 03～05 课关键行为测试已创建；其他按需内容在对应阶段产生时再创建。
+以下为目录约定，树中以第 01 课说明命名方式，完整课程文件见课程索引。第 01～06 课讲义、示例与练习及第 03～06 课关键行为测试已创建；其他按需内容在对应阶段产生时再创建。
 
 ```text
 langgraph/
@@ -36,7 +36,7 @@ langgraph/
 ├── solutions/                     # 按需：讲评时的参考解答
 │   └── 01_state_node_edge/solution.py
 ├── src/agent_learning/            # 按需：完整业务项目源码
-└── tests/                         # 已有第 03～05 课关键行为测试
+└── tests/                         # 已有第 03～06 课关键行为测试
 ```
 
 每课共用一个标识，如 `01_state_node_edge`。文档使用这个名称加 `.md`，代码使用同名目录，避免只看到 `demo.py` 却不知道对应哪篇讲义。
@@ -107,7 +107,7 @@ uv run python path/to/model_lesson.py
 
 模型脚本使用 `from dotenv import dotenv_values`，在当前文件内直接读取根目录 `.env`，再把配置字典显式传给 `init_chat_model`。依赖为 `python-dotenv`，首次引入使用 `uv add python-dotenv`；后续按锁文件复现。示例与练习各自完整，不通过动态加载其他脚本或重启进程隐藏配置步骤。[python-dotenv 官方说明](https://bbc2.github.io/python-dotenv/)
 
-查看配置是否齐全不代表认证、网络或模型调用成功。[第 05 课](lessons/05_model_calls.md) 已添加适配包，并分别验证现有服务的文本、流式、批量、管道和异步调用；工具调用及结构化输出仍需后课单独验证。实际版本、故障与用量见该课实测记录。
+查看配置是否齐全不代表认证、网络或模型调用成功。[第 05 课](lessons/05_model_calls.md) 验证了现有服务的文本、流式、批量、管道和异步调用；[第 06 课](lessons/06_tools_structured_output.md) 已分别验证工具往返及 `function_calling` 结构化提取，不据此推断其他方法可用。实际版本、故障与用量按需查看各课实测记录。
 
 ## 状态如何记录
 

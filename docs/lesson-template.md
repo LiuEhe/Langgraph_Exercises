@@ -31,9 +31,7 @@
 uv run python examples/NN_topic/demo.py
 uv run python exercises/NN_topic/exercise.py
 
-# 需要模型的课使用以下形式
-uv run --env-file .env python examples/NN_topic/demo.py
-uv run --env-file .env python exercises/NN_topic/exercise.py
+# 模型课也使用上面的命令；每份脚本自行通过 dotenv_values 直接读取根目录 .env
 ```
 
 ## 核心概念与执行过程
@@ -100,4 +98,4 @@ uv run --env-file .env python exercises/NN_topic/exercise.py
 
 ## 下一步与官方资料
 
-说明下一课衔接的能力，并链接到与本课接口直接相关的官方文档。验收后把学习者表现写入 `docs/learning-log.md`。
+说明下一课衔接的能力，并链接到与本课接口直接相关的官方文档。验收后更新 `docs/progress.md` 的当前状态；需要保留的详细过程才写入历史日志。

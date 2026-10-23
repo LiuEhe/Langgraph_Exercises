@@ -223,7 +223,7 @@ print(graph.invoke({"question": "什么是 State？", "answer": ""}))
 - 这些 `LLM_*` 名称是本项目的自定义约定，LangChain 不会自动将它们识别为模型参数，必须显式映射。
 - `LLM_PROVIDER=openai_compatible` 映射为 `init_chat_model(..., model_provider="openai")`，使用 `langchain-openai` 适配包；实际服务由 `LLM_BASE_URL` 指定。该标记只说明兼容协议，不证明所有接口能力均可用。
 - 将 `LLM_MODEL`、`LLM_API_KEY`、`LLM_BASE_URL` 分别传给 `model`、`api_key`、`base_url`；将 `LLM_TIMEOUT_SECONDS` 转为正数后传给 `timeout`。密钥缺失、配置为空或格式不合法时给出不含私有值的清楚错误。
-- 首个真实模型课程先按需执行 `uv add langchain-openai` 并检查锁文件，再做最小请求验证。第 05 课已添加该适配包；已有验证边界见当前进度，详细版本与结果按需查看该课讲义，工具调用与结构化输出仍待分别验证。
+- 首个真实模型课程先按需执行 `uv add langchain-openai` 并检查锁文件，再做最小请求验证。第 05 课已添加该适配包；工具调用与结构化输出按能力分别验证，已有结论见当前进度，详细版本与结果按需查看对应讲义。
 - 首次验证使用短输入、受控输出长度和有限重试；常规查看配置不调用模型。之后分别验证流式输出、工具调用、结构化输出，不能由一次文本响应推断全部能力已支持。
 - 公共模型初始化逻辑在确有复用时再提取到项目包；初学示例先把参数映射讲清楚，不通过修改 `sys.path` 掩盖包配置问题。
 

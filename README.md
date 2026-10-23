@@ -2,7 +2,7 @@
 
 使用 Python 3.12 和 uv，围绕八周路线逐步学习 Agent 工作流、RAG、MCP、多智能体、评估、人工介入与部署。
 
-教学方式、常用 API 清单与阶段验收标准见 [AGENTS.md](AGENTS.md)。模型信息已保存在根目录 `.env`，第 05 课已安装适配包并验证现有服务的文本、流式、批量、管道及异步调用。
+教学方式、常用 API 清单与阶段验收标准见 [AGENTS.md](AGENTS.md)。模型信息已保存在根目录 `.env`；第 05 课验证了文本等调用，第 06 课分别验证了工具往返与结构化提取。
 
 初始验证环境：Python 3.12.13、LangChain 1.4.6、LangGraph 1.2.16。依赖更新后以 `uv.lock` 和实际查询结果为准。
 
@@ -24,7 +24,7 @@ uv run python --version
 
 先看 [教学组织与目录约定](docs/teaching-workflow.md)，再从 [课程索引](docs/lessons/README.md) 找到当前课。导师使用 [讲义模板](docs/lesson-template.md) 逐课备课。
 
-新会话先看 [当前进度](docs/progress.md)，无需通读详细日志。当前在第 05 课管道练习查验阶段，待确认点与下一步以进度文件为准。首次学习从 [第 01 课](docs/lessons/01_state_node_edge.md) 开始，前四课均无需模型。
+新会话先看 [当前进度](docs/progress.md)，无需通读详细日志。第 06 课已备好，前课待确认点与下一步以进度文件为准。首次学习从 [第 01 课](docs/lessons/01_state_node_edge.md) 开始，前四课均无需模型。
 
 每课按“讲义初稿 → 导师示例与练习骨架 → 运行验证并完善讲义 → 学习者练习 → 讲评与记录”推进。讲义覆盖具体 API 的用法、预期输出、实际效果、限制和验收方式。
 
@@ -38,7 +38,7 @@ uv run python --version
 | 按需追溯详细过程 | `docs/learning-log.md` |
 | 后续开发完整项目 | `src/agent_learning/` |
 
-第 01～05 课讲义、导师示例与练习已创建，后续课程逐课准备。第 05 课示例和练习已改为独立读取 `.env`，当前 14 项测试及独立练习的离线检查通过。学习者的当前验收状态与待巩固项见 [当前进度](docs/progress.md)，示例运行成功不代表学习者已验收。
+第 01～06 课讲义、导师示例与练习已创建，当前 18 项离线测试通过。[第 06 课](docs/lessons/06_tools_structured_output.md)提供一次完整工具往返和独立的结构化提取补充，练习默认在本地运行。学习者的当前验收状态与待巩固项见 [当前进度](docs/progress.md)，示例运行成功不代表学习者已验收。
 
 ## 常用命令
 
@@ -79,6 +79,12 @@ uv run python examples/05_model_calls/demo.py
 
 # 第五课练习：只补全管道组合，初态不发送请求
 uv run python exercises/05_model_calls/exercise.py
+
+# 第六课：先观察本地工具，不请求模型
+uv run python examples/06_tools_structured_output/demo.py --local-only
+
+# 第六课练习：补全工具回复，默认使用手工消息，不请求模型
+uv run python exercises/06_tools_structured_output/exercise.py
 
 # 离线检查路由、状态流、消息更新、模型配置与空响应；不代替学习者练习验收
 uv run python -m unittest discover -s tests -p "test_*.py" -v
