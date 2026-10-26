@@ -28,8 +28,14 @@ def make_tool_reply(call: dict) -> ToolMessage:
     任务：检查名称和调用 ID，使用请求中的参数计算，不写死结果。
     框架已经提供 add_numbers；返回值应为 ToolMessage，而不是整数或字符串。
     """
-    raise NotImplementedError("请补全 make_tool_reply，执行工具并返回匹配的 ToolMessage。")
-
+    if call.get("name") != add_numbers.name:
+        raise ValueError("模型请求了本课未提供的工具。")
+    call_id = call.get("id")
+    if not isinstance(call_id, str) or not call_id.strip():
+        raise ValueError("工具调用 ID 无效。")
+    result = add_numbers.invoke(call["args"])
+    return ToolMessage(content=str(result), tool_call_id=call_id, name=add_numbers.name)
+    
 
 def main() -> int:
     arguments = argparse.ArgumentParser(description=__doc__)
