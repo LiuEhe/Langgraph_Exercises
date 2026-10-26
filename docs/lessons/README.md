@@ -1,6 +1,6 @@
 # 课程索引
 
-第一阶段按下表逐课备课，顺序可根据基础调整。目前第 01～06 课材料与必要验证齐全，第 06 课已单独验证真实工具往返和结构化提取；第 07～08 课仍为规划。当前 18 项离线测试通过。备课状态不代表学习者已掌握。
+第一阶段按下表逐课备课，顺序可根据基础调整。目前第 01～07 课材料与必要验证齐全；第 07 课手写图与 create_agent 分别完成真实工具往返，当前 26 项离线测试通过。第 08 课仍为规划。备课状态不代表学习者已掌握。
 
 | 编号与主题标识 | 主要内容与常用 API | 备课状态 |
 | --- | --- | --- |
@@ -10,12 +10,12 @@
 | [04_prompt_messages](04_prompt_messages.md) | `ChatPromptTemplate`、`MessagesPlaceholder`、消息角色；消息状态补充 `MessagesState`、`add_messages`；[主示例](../../examples/04_prompt_messages/demo.py) · [状态补充](../../examples/04_prompt_messages/demo_message_state.py) · [练习](../../exercises/04_prompt_messages/exercise.py) | 可学习（2026-10-23 离线验证） |
 | [05_model_calls](05_model_calls.md) | `.env` 参数映射、`init_chat_model`、`invoke`、`ainvoke`、`stream`、`batch`、`StrOutputParser` 与管道；[示例](../../examples/05_model_calls/demo.py) · [练习](../../exercises/05_model_calls/exercise.py) | 可学习（2026-10-23，真实模型各模式此前已验证，本课 6 项离线检查通过；关闭思考参数尚未实测） |
 | [06_tools_structured_output](06_tools_structured_output.md) | `@tool`、`bind_tools`、`ToolMessage`；补充 `with_structured_output` 和 Pydantic；[主示例](../../examples/06_tools_structured_output/demo.py) · [补充](../../examples/06_tools_structured_output/demo_structured.py) · [练习](../../exercises/06_tools_structured_output/exercise.py) | 可学习（2026-10-23，两类真实请求分别验证，本课 4 项离线检查通过） |
-| `07_agent_workflow` | `create_agent`、`ToolNode`、`tools_condition`；封装 Agent 与手写图对照 | 待编写 |
+| [07_agent_workflow](07_agent_workflow.md) | `ToolNode`、`tools_condition`、调用上限；`create_agent` 与限制中间件对照；[手写图](../../examples/07_agent_workflow/demo.py) · [封装对照](../../examples/07_agent_workflow/demo_create_agent.py) · [练习](../../exercises/07_agent_workflow/exercise.py) | 可学习（2026-10-26，两种真实实现分别验证，本课 8 项离线检查通过） |
 | `08_checkpoint_resume` | `InMemorySaver`、`thread_id`、`get_state`、`interrupt`、`Command`；初步理解恢复 | 待编写 |
 
 第二至第四阶段沿用根目录 `AGENTS.md` 的八周路线，在第一阶段进展明确后再拆课；第三阶段会进一步学习持久化、恢复和人工介入的工程细节。
 
-第 06 课已按用户要求备好；第 05 课独立解释仍待确认。最新验收结论、待巩固点与下一步只看 [当前进度](../progress.md)。详细日志不作为新会话的默认入口。模型示例和练习均在当前文件直接读取 `.env` 并初始化模型。
+第 07 课已按用户要求备好，前课未确认的理解点继续保留。最新验收结论、待巩固点与下一步只看 [当前进度](../progress.md)。详细日志不作为新会话的默认入口。模型示例和练习均在当前文件直接读取 `.env` 并初始化模型。
 
 第 02 课先学通用列表合并；消息专用的 `MessagesState`、`add_messages` 已在第 04 课补充部分结合消息角色和消息 ID 讲解。
 

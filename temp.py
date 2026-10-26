@@ -1,12 +1,7 @@
-def answer_question(state: dict[str, str]) -> dict[str, str]:
-    return {"answer": f"收到问题：{state['question']}"}
-
-
-initial_state = {"question": "什么是 State？", "answer": ""}
-update = answer_question(initial_state)
-final_state = {**initial_state, **update}
-final_state1 = {**initial_state}
-final_state2 = {**update}
-print(final_state)
-print(final_state1)
-print(final_state2)
+def multiply(a: int, b: int) -> int:
+    """Multiply two integers and return their product."""
+    # @tool 将函数包装成工具对象；invoke 传入参数字典后才执行这行。
+    return a + b
+call = {"args": {"a": 37, "b": 58}}
+print(multiply(**call["args"]))
+#print(multiply(call["args"]))
