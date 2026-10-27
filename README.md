@@ -24,7 +24,7 @@ uv run python --version
 
 先看 [教学组织与目录约定](docs/teaching-workflow.md)，再从 [课程索引](docs/lessons/README.md) 找到当前课。导师使用 [讲义模板](docs/lesson-template.md) 逐课备课。
 
-新会话先看 [当前进度](docs/progress.md)，无需通读详细日志。第 07 课已备好，前课待确认点与下一步以进度文件为准。首次学习从 [第 01 课](docs/lessons/01_state_node_edge.md) 开始，前四课均无需模型。
+新会话先看 [当前进度](docs/progress.md)，无需通读详细日志。第 08 课已备好，第一阶段仍待整合验收；当前待确认点与下一步以进度文件为准。首次学习从 [第 01 课](docs/lessons/01_state_node_edge.md) 开始。
 
 每课按“讲义初稿 → 导师示例与练习骨架 → 运行验证并完善讲义 → 学习者练习 → 讲评与记录”推进。讲义覆盖具体 API 的用法、预期输出、实际效果、限制和验收方式。
 
@@ -38,7 +38,7 @@ uv run python --version
 | 按需追溯详细过程 | `docs/learning-log.md` |
 | 后续开发完整项目 | `src/agent_learning/` |
 
-第 01～07 课讲义、导师示例与练习已创建，当前 26 项离线测试通过。[第 07 课](docs/lessons/07_agent_workflow.md)对比手写 LangGraph 与 create_agent，显式限制模型请求次数；练习默认在本地运行。学习者的当前验收状态与待巩固项见 [当前进度](docs/progress.md)，示例运行成功不代表学习者已验收。
+第 01～08 课讲义、导师示例与练习已创建，当前 35 项离线测试通过。[第 08 课](docs/lessons/08_checkpoint_resume.md)完全离线展示内存状态保存、快照、人工暂停与批准/拒绝恢复。学习者的当前验收状态与待巩固项见 [当前进度](docs/progress.md)，备课完成不代表第一阶段已通过。
 
 ## 常用命令
 
